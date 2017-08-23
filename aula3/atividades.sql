@@ -3,6 +3,11 @@
 Na universidade em questão existem alguns cursos que foram extintos, mas que ainda encontram-se cadastrados no banco de dados. Entende-se por um curso extinto àquele que não oferece disciplinas. Faça uma consulta SQL que retorne os códigos destes cursos extintos. 
  
 SELECT codigoCurso FROM Cursos WHERE codigoCurso NOT IN (SELECT codigoCurso FROM Disciplinas)
+
+-- Pela prof
+
+SELECT codigoCurso FROM Cursos c  WHERE NOT EXISTS(SELECT * FROM Disciplinas d WHERE d.codCurso = c.codCurso)
+
 -- Questão 2
 
 Forneça uma expressão SQL que retorne o nome dos departamentos que fornecem tanto disciplinas para o curso com nome BCC, quanto para o curso com nome EE. A expressão SQL deve utilizar o operador de intersecção como parte da solução.
@@ -14,6 +19,8 @@ SELECT nome FROM Departamentos WHERE codigoDep IN
 	INTERSECT
 	SELECT codigoDep FROM Disciplinas WHERE codigoDep IN (SELECT codigoDep FROM Departamentos WHERE nome = 'EE')
 )
+
+
 
 -- Questão 3
 Forneça uma expressão SQL que retorne uma listagem com o código das disciplinas de 4 créditos, bem como o código das disciplinas que possuem resultados para o semestre 2016-1.

@@ -29,3 +29,30 @@ db.locacoes.insertMany([
 db.reservas.insertMany([
   { id: 1, filme: 1, cliente: 1, dataR: '2017-10-05', dataPD: '2017-10-12', funcionario: 1, dataRes: '2017-10-11' }
 ]);
+
+// SELECT * FROM Categorias;
+db.categorias.find({});
+
+// SELECT titulo, duracao FROM Filmes WHERE ano=2015;
+db.filmes.find({ano: 2015} , {titulo, duracao});
+
+
+// SELECT titulo, nome FROM Filmes f JOIN Estilos e ON f.estilo=e.ID;
+db.filmes.aggregate([
+  {
+    $lookup:
+      {
+        from: "estilos",
+        localField: "estilo",
+        foreignField: "id",
+        as: "filmes e estilos"
+      }
+  },
+  {
+    $project:
+      {
+        titulo: 1,
+        nome: 1
+      }
+  }
+]);

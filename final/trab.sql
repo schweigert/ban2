@@ -26,7 +26,7 @@ ESTILOS = {
   nome
 }
 
-FIMLES = {
+FILMES = {
   ID,
   titulo,
   duracao,

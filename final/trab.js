@@ -1,6 +1,6 @@
 // Trabalho final de BAN2
-// Marlon Henry Schweigert
 // Jonathan de Oliveira Cardoso
+// Marlon Henry Schweigert
 
 db.categorias.insertMany([
     {
